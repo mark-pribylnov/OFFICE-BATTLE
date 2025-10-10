@@ -4,7 +4,11 @@ import express from "express";
 import mongoose from "mongoose";
 // import Product from "./models/product.model.js";
 import productRoute from "./routes/product.route.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 
 // MIDDLEWARE
@@ -12,6 +16,8 @@ const app = express();
 app.use(express.json());
 // allow using urlelcoded (I don't know what's that yet). Seems like sending data with html forms
 app.use(express.urlencoded({ extended: false }));
+// serve static files
+app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTES
 app.use("/api/products", productRoute);
