@@ -6,18 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev-start": "nodemon server.js"
+    "dev-start": "nodemon server.js --ext js,ejs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
-    "mongoose": "^8.19.1",
-    "mongodb": "^6.20.0"
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.1"
   },
   "devDependencies": {
     "dotenv": "^17.2.3",

@@ -1,0 +1,9 @@
+<h2>New Author</h2>
+<form action="/authors" method="POST">
+  <%- include('_form_fields.ejs')%>
+  <!-- We don't manually add input tag because there'g going to be a lot of them. They're shared across the pages, so we better create a new partial file
+Explanation: https://youtu.be/esy4nRuShl8?si=4FsE3BuoyMe20Acy&t=736  
+-->
+  <a href="/authors">Cancel</a>
+  <button type="submit">Create</button>
+</form>

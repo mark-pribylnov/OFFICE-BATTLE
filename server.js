@@ -1,3 +1,5 @@
+// STOPPET AT Episode 2 19:47 https://www.youtube.com/watch?v=esy4nRuShl8&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM
+
 // Tutorial: https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
 
 import dotenv from "dotenv";
@@ -5,9 +7,9 @@ import express from "express";
 import expressEjsLayouts from "express-ejs-layouts";
 import path from "path";
 import { fileURLToPath } from "url";
-import indexRouter from "./routes/index.js";
 import mongoose from "mongoose";
 import { nextTick } from "process";
+import bodyParser from "body-parser";
 
 if (process.env.NODE_ENV !== "production") dotenv.config();
 
@@ -23,9 +25,15 @@ app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout");
 app.use(expressEjsLayouts);
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
+import indexRouter from "./routes/index.js";
+import authorRouter from "./routes/authors.js";
 // "/" says "very root of the application"
+// Explanaion of routes: https://youtu.be/esy4nRuShl8?si=3ydFWhL9lQtvqvgw&t=211
 app.use("/", indexRouter);
+app.use("/authors", authorRouter);
+
 // Parse form data and JSON (FROM DEEPSEEK)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
