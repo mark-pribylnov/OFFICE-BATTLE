@@ -1,18 +1,24 @@
 {
   "name": "office-battle",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-server": "node index.js"
+    "start": "node server.js",
+    "dev-start": "nodemon server.js --ext js,ejs"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "description": "",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.19.1"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.3",
+    "nodemon": "^3.1.10"
   }
 }

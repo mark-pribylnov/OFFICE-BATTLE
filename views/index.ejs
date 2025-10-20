@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battle</title>
+    <style>
+      body {
+        background-color: gray;
+      }
+
+      form > * {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="/game/play" method="post">
+      <h3>Choose winner of the day</h3>
+
+      <ul class="players">
+        <% allPlayers.forEach(player => { %>
+        <li class="players">
+          <span class="player__name"><%=player.name%></span>
+          :
+          <span class="player__score"><%= player.score %></span>
+        </li>
+        <% }); %>
+      </ul>
+
+      <button type="submit">Play</button>
+    </form>
+  </body>
+</html>
