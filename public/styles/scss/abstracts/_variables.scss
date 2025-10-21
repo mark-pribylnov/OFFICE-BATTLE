@@ -1,0 +1,104 @@
+//======================
+// #FONT-FAMILY
+//======================
+
+$ff-primary: "Roboto";
+$ff-headings: "Forum";
+
+//======================
+// #FONT-COLOR
+//======================
+
+$fc-nav-links: #ffffff;
+$fc-logo-text: #ffffff;
+$fc-headers-gold: #9d8665;
+$fs-links-active: #7e6c51;
+$fc-headers-white: #ffffff;
+$fc-slogan-header: #ffffff;
+$fc-CTA-btn: #ffffff;
+$fc-welcome-section-slider-dots: #ffffff;
+
+//======================
+// #BREAK-POINTS
+//======================
+// There are breakpoints that are not declared as these variables. Type in the search box "#break point not from variables"
+
+$bp-desktop: 1500px;
+// at 1500px the content touchs the screen. Above 1500 everything is ok.
+$bp-laptop: calc(1024px + 1px);
+$bp-tablet: calc(768px + 1px);
+$bp-mobile: calc(420px + 1px);
+
+//======================
+// #FONT-SIZE
+//======================
+// NEXT PROJECT: Maybe another approach for font-sizes. Too many variables, there's should be another way.
+
+$fs-logo-ticketsTotal-desktop-tablet: 2.8rem;
+$fs-logo-ticketsTotal-mobile: 1.6rem;
+
+$fs-nav-links-desktop: 2.2rem;
+$fs-nav-links-laptop-mobile: 2rem;
+
+$fs-main-headings-desktop: 8rem;
+$fs-main-headings-laptop: 5rem;
+$fs-main-headings-tablet: 4rem;
+$fs-main-headings-mobile: 2.8rem;
+
+$fs-tour-section-headings-desktop: 3.2rem;
+$fs-tour-section-headings-laptop: 2.8rem;
+$fs-tour-section-headings-tablet: 2.2rem;
+$fs-tour-section-headings-mobile: 1.8rem;
+
+$fs-slogan-TicketBlock-companyName-headings-desktop: 2.8rem;
+$fs-slogan-TicketBlock-companyName-headings-laptop: 2.4rem;
+$fs-slogan-TicketBlock-companyName-headings-tablet: 2rem;
+$fs-slogan-TicketBlock-companyName-headings-mobile: 1.6rem;
+
+$fs-common-text-desktop: 2.2rem;
+$fs-common-text-laptop: 2rem;
+$fs-common-text-tablet: 2rem;
+$fs-common-text-mobile: 1.6rem;
+
+$fs-ticket-types: 2.2rem;
+
+$fs-ticketAge-btnBuy-copyright-desktop-tablet: 2.2rem;
+$fs-ticketAge-btnBuy-copyright-mobile: 1.6rem;
+
+$fs-tour360link-contactsText-desktop: 2.2rem;
+$fs-tour360link-contactsText-laptop: 2rem;
+$fs-tour360link-contactsText-tablet: 1.8rem;
+$fs-tour360link-contactsText-mobile: 1.6rem;
+
+$fs-footer-links-desktop-laptop: 2.2rem;
+$fs-footer-links-tablet: 1.8rem;
+$fs-footer-links-mobile: 1.6rem;
+
+$fs-tour-google-view-desktop: 1.8rem;
+$fs-tour-google-view-laptop-mobile: 1.6rem;
+
+$fs-explore-section-text-desktop: 2.2rem;
+$fs-explore-section-text-laptop: 2rem;
+
+$fs-booking-form-heading: 5rem;
+$fs-booking-form-heading-mobile: 3.2rem;
+
+$fs-booking-form-18: 1.8rem;
+$fs-booking-form-22: 2.2rem;
+$fs-booking-form-32: 3.2rem;
+
+$fs-credit-card-12: 1.2rem;
+$fs-credit-card-10: 1rem;
+
+//======================
+// #BACKGROUND-COLORS
+//======================
+
+$bg-dark: #030303;
+$bg-red: #710707;
+
+//======================
+// #OTHER
+//======================
+
+$burger-animation-timing: 200ms ease-in-out;

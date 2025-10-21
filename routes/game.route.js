@@ -3,9 +3,8 @@
 import express from "express";
 const router = express.Router();
 
-router.post("/play", (req, res) => {
-  console.log(2324324);
-  res.render("../views/404.ejs");
-});
+// router.post("/play", (req, res) => {
+//   res.render("../views/404.ejs");
+// });
 
 export default router;

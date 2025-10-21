@@ -77,15 +77,22 @@ async function addPlayer(name) {
   await player.save();
 }
 
+// addPlayer("Vlad");
+// addPlayer("Mark");
+
 async function getAllPlayers() {
   const players = await Player.find({});
   console.log(players);
   return players;
 }
 
+// getAllPlayers();
+
 async function deleteAllPlayers() {
   await Player.deleteMany({});
 }
+
+// deleteAllPlayers();
 
 // About middleware
 // https://youtu.be/SccSCuHhOw0?si=6F7zNtccQASV00-5&t=1460
