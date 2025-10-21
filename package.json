@@ -1,0 +1,27 @@
+{
+  "name": "office-battle",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev-mode": "concurrently \"nodemon server.js --ext js,ejs\" \"sass --watch ./public/styles/scss/main.scss ./public/styles/main.css\""
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.1",
+    "node-cron": "^4.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.2.3",
+    "nodemon": "^3.1.10",
+    "sass": "^1.93.2"
+  }
+}
