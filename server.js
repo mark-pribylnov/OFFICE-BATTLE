@@ -77,8 +77,8 @@ async function addPlayer(name) {
   await player.save();
 }
 
-// addPlayer("Vlad");
-// addPlayer("Mark");
+addPlayer("Vlad");
+addPlayer("Mark");
 
 async function getAllPlayers() {
   const players = await Player.find({});
