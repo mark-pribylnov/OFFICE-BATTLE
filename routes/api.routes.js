@@ -5,27 +5,30 @@
 // use router.router("/:id").get(...the same code as below...).post(...).delete(...).put(...)
 
 import express from "express";
+import playersRoutes from "./api/players.routes.js";
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("All users");
-});
+router.use("/players", playersRoutes);
 
-router.get("/:idOrNameItWhateverYouWant", (req, res) => {
-  res.send(`get user by id: ${req.params.idOrNameItWhateverYouWant}`);
-});
+// router.get("/", (req, res) => {
+//   res.json({ users: "All users", parents: 33 });
+// });
 
-router.post("/", (req, res) => {
-  res.send("Create User");
-});
+// router.get("/:idOrNameItWhateverYouWant", (req, res) => {
+//   res.send(`get user by id: ${req.params.idOrNameItWhateverYouWant}`);
+// });
 
-router.put("/:thisID", (req, res) => {
-  res.send("update User with thisID");
-});
+// router.post("/", (req, res) => {
+//   res.send("Create User");
+// });
 
-router.delete("/:id", (req, res) => {
-  res.send("delete User");
-});
+// router.put("/:thisID", (req, res) => {
+//   res.send("update User with thisID");
+// });
+
+// router.delete("/:id", (req, res) => {
+//   res.send("delete User");
+// });
 
 // You can use a middleware every time we get a route that has the :id.
 // Let's say we want to get that user
