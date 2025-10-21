@@ -2,11 +2,13 @@
 
 import express from "express";
 import dotenv from "dotenv";
-import Player from "./models/player.model.js";
+import Player from "./models/player.models.js";
 import mongoose from "mongoose";
 
-import gameRouter from "./routes/game.route.js";
-import playersRouter from "./routes/players.route.js";
+// import gameRouter from "./routes/game.routes.js";
+// import playersRouter from "./routes/api/players.routes.js";
+import apiRouter from "./routes/api.routes.js";
+import viewsRouter from "./routes/view.routes.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -30,20 +32,13 @@ app.use(express.json());
 // allow using JSON when recieving data. It does the same thing as express.urlencoded({ extended: false }) but allows us to read a JSON request.
 // https://youtu.be/SccSCuHhOw0?si=Rxy2YAosBFiOgPM0&t=2083
 
-app.get("/", async (req, res) => {
-  try {
-    const allPlayers = await Player.find();
-    res.render("index", { allPlayers });
-  } catch {
-    res.status(500).send("Error fetching players");
-  }
-});
-
 app.use(logger); // or we can run logger only for /game - app.get("/game", logger, addAsManyAsYouWant, (req, res)=>{other code})
 // Or use in on a router like router.use(logger) and every single route of that router will have the logger
 
-app.use("/game", gameRouter);
-app.use("/players", playersRouter);
+// app.use("/game", gameRouter);
+// app.use("/players", playersRouter);
+app.use("/api", apiRouter);
+app.use("/", viewsRouter);
 
 mongoose.connect(process.env.LOCAL_DATABASE_URL);
 
@@ -51,6 +46,11 @@ const db = mongoose.connection;
 
 db.on("error", error => console.log(error));
 db.once("open", () => console.log("Connected to Mongoose"));
+
+// import cron from "node-cron";
+// cron.schedule("*/1 * * * * *", () => {
+//   console.log("Every 1 second");
+// });
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);

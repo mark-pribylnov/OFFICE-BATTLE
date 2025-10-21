@@ -7,9 +7,9 @@
 
       <ul class="players">
         <% allPlayers.forEach(player => { %>
-        <li class="players">
-          <span class="player__name js-player-name"><%=player.name%></span>:
-          <span class="player__score js-player-score"><%= player.score %></span>
+        <li class="players" data-player-id="<%=player._id %>">
+          <span class="player__name js-player-name" data-player-id="<%=player._id %>"><%=player.name%></span>:
+          <span class="player__score js-player-score" data-player-id="<%=player._id %>"><%= player.score %></span>
         </li>
         <% }); %>
       </ul>
