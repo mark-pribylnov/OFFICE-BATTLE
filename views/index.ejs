@@ -2,18 +2,17 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
-    <form action="/game/play" method="post">
+    <form class="js-form" action="/" method="post">
       <h3>Choose winner of the day</h3>
 
       <ul class="players">
         <% allPlayers.forEach(player => { %>
         <li class="players">
-          <span class="player__name"><%=player.name%></span>:
-          <span class="player__score"><%= player.score %></span>
+          <span class="player__name js-player-name"><%=player.name%></span>:
+          <span class="player__score js-player-score"><%= player.score %></span>
         </li>
         <% }); %>
       </ul>
-
       <button type="submit">Play</button>
     </form>
   </body>
