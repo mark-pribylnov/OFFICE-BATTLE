@@ -40,7 +40,8 @@ app.use(logger); // or we can run logger only for /game - app.get("/game", logge
 app.use("/api", apiRouter);
 app.use("/", viewsRouter);
 
-mongoose.connect(process.env.LOCAL_DATABASE_URL);
+// mongoose.connect(process.env.LOCAL_DATABASE_URL);
+mongoose.connect(process.env.ATLAS_URL);
 
 const db = mongoose.connection;
 
