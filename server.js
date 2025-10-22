@@ -77,12 +77,19 @@ async function addPlayer(name) {
   await player.save();
 }
 
-addPlayer("Vlad");
-addPlayer("Mark");
+async function reloadPlayers() {
+  const players = await getAllPlayers();
+
+  if (players.length > 2) {
+    await deleteAllPlayers();
+    await addPlayer("Vlad");
+    await addPlayer("Mark");
+  }
+}
+reloadPlayers();
 
 async function getAllPlayers() {
   const players = await Player.find({});
-  console.log(players);
   return players;
 }
 
