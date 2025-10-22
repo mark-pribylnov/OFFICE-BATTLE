@@ -8,8 +8,8 @@ FORM.addEventListener("submit", async e => {
   const players = await getAllPlayers();
   const winner = players[getRandomNumber(0, players.length - 1)];
   winner.score += 1;
-  updatePlayerScore_inDB(winner._id, winner.score);
   changePlayerScore_forClient(winner._id, winner.score);
+  updatePlayerScore_inDB(winner._id, winner.score);
 });
 
 async function getAllPlayers() {
