@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const allPlayers = await Player.find();
-    console.log("Players fetched:", allPlayers.length);
+    // console.log("Players fetched:", allPlayers.length);
     res.render("index", { allPlayers });
   } catch {
     res.status(500).send("Error fetching players");

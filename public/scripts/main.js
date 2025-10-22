@@ -5,11 +5,7 @@ const NAMES = Array.from(document.querySelectorAll(".js-player-name"));
 FORM.addEventListener("submit", async e => {
   e.preventDefault();
 
-  const players = await getAllPlayers();
-  const winner = players[getRandomNumber(0, players.length - 1)];
-  winner.score += 1;
-  changePlayerScore_forClient(winner._id, winner.score);
-  updatePlayerScore_inDB(winner._id, winner.score);
+  handleSubmit();
 });
 
 async function getAllPlayers() {
@@ -40,4 +36,12 @@ function changePlayerScore_forClient(playerID, newScore) {
       score.textContent = newScore;
     }
   });
+}
+
+function handleSubmit() {
+  const playersIds = SCORES.map(el => el.dataset.playerId);
+  const winnerId = playersIds[getRandomNumber(0, playersIds.length - 1)];
+  const winnerScore = Number(SCORES.find(el => el.dataset.playerId === winnerId).textContent) + 1;
+  changePlayerScore_forClient(winnerId, winnerScore);
+  updatePlayerScore_inDB(winnerId, winnerScore);
 }
