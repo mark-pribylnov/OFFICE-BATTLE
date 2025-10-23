@@ -5,23 +5,28 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev-mode": "concurrently \"nodemon server.js --ext js,ejs\" \"sass --watch ./public/styles/scss/main.scss ./public/styles/main.css\""
+    "dev-mode": "concurrently \"nodemon server.js --ext js,ejs\" \"sass --watch ./public/src/styles/scss/main.scss ./public/src/styles/main.css\""
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.19.1",
     "node-cron": "^4.2.1",
-    "dotenv": "^17.2.3"
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
     "nodemon": "^3.1.10",
-    "sass": "^1.93.2"
+    "sass": "^1.93.2",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
   }
 }

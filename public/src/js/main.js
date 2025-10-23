@@ -1,3 +1,11 @@
+// import "../styles/scss/main.scss";
+
+// const socket = io("http://localhost:3000");
+
+// socket.on("connect", () => {
+//   console.log("Connected with socket ID:", socket.id);
+// });
+
 const FORM = document.querySelector(".js-form");
 const SCORES = Array.from(document.querySelectorAll(".js-player-score"));
 const NAMES = Array.from(document.querySelectorAll(".js-player-name"));

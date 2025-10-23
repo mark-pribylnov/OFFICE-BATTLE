@@ -1,6 +1,8 @@
 // Tutorial: https://www.youtube.com/watch?v=_7UQPve99r4
 
 import express from "express";
+import http from "http";
+import { Server } from "socket.io";
 import dotenv from "dotenv";
 import Player from "./models/player.models.js";
 import mongoose from "mongoose";
@@ -18,6 +20,23 @@ const __dirname = path.dirname(__filename);
 if (process.env.NODE_ENV !== "production") dotenv.config();
 
 const app = express();
+// const server = http.createServer(app);
+
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+// io.on("connection", socket => {
+//   console.log(`Client connected to: ${socket.id}`);
+
+//   socket.on("disconnect", () => {
+//     console.log(`Client disconnected from: ${socket.id}`);
+//   });
+// });
+
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 // serve static files so we can go to uerl /page1 and we get page1.html without any routes.
@@ -56,6 +75,12 @@ db.once("open", () => console.log("Connected to Mongoose"));
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
+
+// it runs a funciton every time a client connects to the server and it fives a socket instance for each one of them
+
+// server.listen(process.env.PORT || 3000, () => {
+//   console.log(`Server is running on port ${process.env.PORT || 3000}`);
+// });
 
 //
 //
