@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev-mode": "concurrently \"nodemon server.js --ext js,ejs\" \"sass --watch ./public/src/styles/scss/main.scss ./public/src/styles/main.css\""
+    "dev-mode": "concurrently \"nodemon server.js --ext js,ejs\" \"sass --watch ./public/src/styles/scss/main.scss ./public/src/styles/main.css\"",
+    "build": "webpack",
+    "server": "nodemon server.js --ext js,ejs"
   },
   "author": "",
   "license": "ISC",
@@ -23,10 +24,17 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.4",
+    "mini-css-extract-plugin": "^2.9.4",
     "nodemon": "^3.1.10",
     "sass": "^1.93.2",
+    "sass-loader": "^16.0.6",
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "webpack-dev-middleware": "^7.4.5",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-hot-middleware": "^2.26.1",
+    "webpack-manifest-plugin": "^5.0.1"
   }
 }

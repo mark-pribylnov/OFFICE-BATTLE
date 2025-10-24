@@ -1,11 +1,16 @@
 // Tutorial: https://www.youtube.com/watch?v=_7UQPve99r4
 
 import express from "express";
-import http from "http";
-import { Server } from "socket.io";
+// import http from "http";
+// import { Server } from "socket.io";
 import dotenv from "dotenv";
 import Player from "./models/player.models.js";
 import mongoose from "mongoose";
+
+import fs from "fs";
+import webpack from "webpack";
+import webpackDevMiddleware from "webpack-dev-middleware";
+import webpackConfig from "./webpack.config.js";
 
 // import gameRouter from "./routes/game.routes.js";
 // import playersRouter from "./routes/api/players.routes.js";
@@ -20,6 +25,24 @@ const __dirname = path.dirname(__filename);
 if (process.env.NODE_ENV !== "production") dotenv.config();
 
 const app = express();
+const compiler = webpack(webpackConfig);
+
+const manifestPath = path.join(__dirname, "public/dist/manifest.json");
+let manifest = {};
+
+if (fs.existsSync(manifestPath)) {
+  manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+}
+
+app.locals.manifest = manifest;
+
+app.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+    writeToDisk: true,
+  })
+);
+
 // const server = http.createServer(app);
 
 // const io = new Server(server, {
@@ -38,6 +61,7 @@ const app = express();
 // });
 
 app.set("view engine", "ejs");
+
 app.use(express.static(path.join(__dirname, "public")));
 // serve static files so we can go to uerl /page1 and we get page1.html without any routes.
 // AND you need it to use CSS because you files refer to e.g. main.css and without this option they're not going to find that file because we didnt'

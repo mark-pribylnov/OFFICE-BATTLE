@@ -5,6 +5,12 @@
 // socket.on("connect", () => {
 //   console.log("Connected with socket ID:", socket.id);
 // });
+// import { test } from "./test.js";
+
+// console.log("Hey");
+// test(1, 2);
+
+import "../scss/main.scss";
 
 const FORM = document.querySelector(".js-form");
 const SCORES = Array.from(document.querySelectorAll(".js-player-score"));
