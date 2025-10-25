@@ -1,47 +1,38 @@
-const FORM = document.querySelector(".js-form");
-const SCORES = Array.from(document.querySelectorAll(".js-player-score"));
-const NAMES = Array.from(document.querySelectorAll(".js-player-name"));
+import "./play-game.js";
 
-FORM.addEventListener("submit", async e => {
-  e.preventDefault();
+// // io connects to the socket.io server at the url. It return a socket that we store in the variable "socket" (or name it whatever you want) -> https://youtu.be/GdYVTWujYD8?si=6GbbzrMgQfIhF8Vh&t=3813
+// const socket = io("http://localhost:3000", {
+//   // About auth and query -> https://youtu.be/GdYVTWujYD8?si=kSriN0mXVNd4qwLq&t=3695
+//   auth: {
+//     secret: "Little secret", // NOT available in the URL, but available in server in the "connection" (io.on("connection", socket =>{...}))
+//   },
+//   // with this auth: you can make authentification and if the client didn't pass, disconnect it form the server side
+//   query: {
+//     meaningOfLife: 42, // available in the URL
+//   },
+// }); // insert your express server address
 
-  handleSubmit();
-});
+// // This socket has an "on" method and an "emit" method just like in server.js -> https://youtu.be/GdYVTWujYD8?si=4mWIdS6U1ijKxO-N&t=2146
 
-async function getAllPlayers() {
-  const res = await fetch("/api/players");
-  const players = await res.json();
-  return players;
-}
+// socket.on("anyEventName(here's your stuff)", data => {
+//   console.log(data);
+//   // once "enyEventName" is emmited from the server, we run this callback
+//   socket.emit("thank_you_event", ["here's the money"]);
+// });
 
-function getRandomNumber(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+// socket.on("Hey_to_all_clients", data => {
+//   console.log("Message to all clients", data);
+// });
 
-async function updatePlayerScore_inDB(id, score) {
-  const res = await fetch(`/api/players/${id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ score: score }),
-  });
+// socket.on("message_from_server_to_all_clients", newMessage => {
+//   document.getElementById("messages").innerHTML += `<li>${newMessage}</li>`;
+// });
 
-  const updatedPlayer = await res.json();
-  return updatedPlayer;
-}
+// document.getElementById("messages-form").addEventListener("submit", e => {
+//   e.preventDefault();
 
-function changePlayerScore_forClient(playerID, newScore) {
-  SCORES.forEach(score => {
-    if (score.dataset.playerId === playerID) {
-      score.textContent = newScore;
-    }
-  });
-}
+//   const newMessage = document.getElementById("user-message").value;
+//   document.getElementById("user-message").value = "";
 
-function handleSubmit() {
-  const playersIds = SCORES.map(el => el.dataset.playerId);
-  const winnerId = playersIds[getRandomNumber(0, playersIds.length - 1)];
-  const winnerScore = Number(SCORES.find(el => el.dataset.playerId === winnerId).textContent) + 1;
-  changePlayerScore_forClient(winnerId, winnerScore);
-  updatePlayerScore_inDB(winnerId, winnerScore);
-}
+//   socket.emit("message_from_client_to_server", newMessage); // this socket is sending an event to the server
+// });
