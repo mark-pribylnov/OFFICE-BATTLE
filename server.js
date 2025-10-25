@@ -40,8 +40,30 @@ db.on("error", error => console.log(error));
 db.once("open", () => console.log("Connected to Mongoose"));
 
 // <----- Launch server ----->
-app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
+});
+
+// <----- Socket.io ----->
+import { Server } from "socket.io";
+
+const io = new Server(server, {
+  cors: [process.env.CLIENT_URL],
+});
+
+let clientNumber = 0;
+
+io.on("connection", socket => {
+  console.log(`Client number ${(clientNumber += 1)} connected to socket id: ${socket.id}`);
+
+  socket.on("update_one_player_score", winner => {
+    io.emit("all_clients_update_one_player_score", winner);
+  });
+
+  socket.on("disconnect", reason => {
+    console.log(`Client disconnected from socket id: ${socket.id} with reason: ${reason}`);
+    clientNumber -= 1;
+  });
 });
 
 // TODO: delete when the game allows more than 2 players

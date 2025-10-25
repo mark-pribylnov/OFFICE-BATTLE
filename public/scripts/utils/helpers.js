@@ -2,6 +2,27 @@ export function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); // min and max included
 }
 
+export function changePlayerScore_forClient(playerID, newScore) {
+  const SCORES = Array.from(document.querySelectorAll(".js-player-score"));
+
+  SCORES.forEach(score => {
+    if (score.dataset.playerId === playerID) {
+      score.textContent = newScore;
+    }
+  });
+}
+
+export async function updatePlayerScore_inDB(id, score) {
+  const res = await fetch(`/api/players/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ score: score }),
+  });
+
+  const updatedPlayer = await res.json();
+  return updatedPlayer;
+}
+
 // model was Player from player.models.js
 export async function addPlayer(model, name) {
   const player = await model.create({ name: name });
