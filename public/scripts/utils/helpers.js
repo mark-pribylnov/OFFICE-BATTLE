@@ -2,12 +2,13 @@ export function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); // min and max included
 }
 
-export function changePlayerScore_forClient(playerID, newScore) {
+export function changePlayerScore_forClient(playerID) {
   const SCORES = Array.from(document.querySelectorAll(".js-player-score"));
 
   SCORES.forEach(score => {
     if (score.dataset.playerId === playerID) {
-      score.textContent = newScore;
+      const currentScore = Number(score.textContent);
+      score.textContent = currentScore + 1;
     }
   });
 }

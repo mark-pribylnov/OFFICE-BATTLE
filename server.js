@@ -51,18 +51,18 @@ const io = new Server(server, {
   cors: [process.env.CLIENT_URL],
 });
 
-let clientNumber = 0;
+// let clientNumber = 0;
 
 io.on("connection", socket => {
-  console.log(`Client number ${(clientNumber += 1)} connected to socket id: ${socket.id}`);
+  // console.log(`Client number ${(clientNumber += 1)} connected to socket id: ${socket.id}`);
 
   socket.on("update_one_player_score", data => {
     io.emit("all_clients_update_one_player_score", data);
   });
 
   socket.on("disconnect", reason => {
-    console.log(`Client disconnected from socket id: ${socket.id} with reason: ${reason}`);
-    clientNumber -= 1;
+    // console.log(`Client disconnected from socket id: ${socket.id} with reason: ${reason}`);
+    // clientNumber -= 1;
   });
 });
 
