@@ -1,3 +1,5 @@
+// NEXT refactor "helpers.js" and make "shared" file or folder. Move out ot helper functions that are used only in one place
+
 // NEXT: increment score in database, not setting absolute value
 // NEXT: write test for multiclicking. The score has to be updated correctly when the user clicks very fast (1 click per 100ms)
 
