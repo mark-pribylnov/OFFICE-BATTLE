@@ -1,10 +1,15 @@
 import { changePlayerScore_forClient } from "./utils/helpers.js";
 
-const socket = io();
+export const socket = io();
+export let mySocketId = null;
 
-socket.on("all_clients_update_one_player_score", winner => {
-  const { winnerId, winnerScore } = winner;
-  changePlayerScore_forClient(winnerId, winnerScore);
+socket.on("connect", () => {
+  mySocketId = socket.id;
 });
 
-export default socket;
+socket.on("all_clients_update_one_player_score", data => {
+  if (data.socketId_emitter === mySocketId) return; // don't update my own score
+
+  const { winnerId, winnerScore } = data.winner;
+  changePlayerScore_forClient(winnerId, winnerScore);
+});
