@@ -56,8 +56,8 @@ let clientNumber = 0;
 io.on("connection", socket => {
   console.log(`Client number ${(clientNumber += 1)} connected to socket id: ${socket.id}`);
 
-  socket.on("update_one_player_score", winner => {
-    io.emit("all_clients_update_one_player_score", winner);
+  socket.on("update_one_player_score", data => {
+    io.emit("all_clients_update_one_player_score", data);
   });
 
   socket.on("disconnect", reason => {
