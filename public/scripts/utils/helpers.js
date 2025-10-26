@@ -7,7 +7,8 @@ export function changePlayerScore_forClient(playerID, newScore) {
 
   SCORES.forEach(score => {
     if (score.dataset.playerId === playerID) {
-      score.textContent = newScore;
+      const currentScore = Number(score.textContent);
+      score.textContent = currentScore + 1;
     }
   });
 }
