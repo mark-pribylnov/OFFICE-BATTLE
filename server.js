@@ -1,3 +1,35 @@
+// NEXT: increment score in database, not setting absolute value
+// NEXT: write test for multiclicking. The score has to be updated correctly when the user clicks very fast (1 click per 100ms)
+
+// NEXT: authorizatoin https://www.youtube.com/watch?v=-RCnNyD0L-s
+
+//NEXT: rewrite all you have in typescript
+
+// NEXT: when it's time for front-end - learn react and maybe next.js
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 // Tutorial: https://www.youtube.com/watch?v=_7UQPve99r4
 
 import express from "express";
